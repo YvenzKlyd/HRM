@@ -24,9 +24,12 @@
                             <div>
                                 <label for="type" class="block text-sm font-medium text-gray-700">Room Type</label>
                                 <select name="type" id="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                    <option value="Deluxe Suite" {{ $room->type == 'Deluxe Suite' ? 'selected' : '' }}>Deluxe Suite</option>
-                                    <option value="Vampire's Lair" {{ $room->type == "Vampire's Lair" ? 'selected' : '' }}>Vampire's Lair</option>
-                                    <option value="Ghostly Chamber" {{ $room->type == 'Ghostly Chamber' ? 'selected' : '' }}>Ghostly Chamber</option>
+                                    <option value="Haunted Suites" {{ $room->type == 'Haunted Suites' ? 'selected' : '' }}>Deluxe Room</option>
+                                    <option value="Deluxe Room" {{ $room->type == "Deluxe Room" ? 'selected' : '' }}>Vampire's Lair</option>
+                                    <option value="Vampire Room" {{ $room->type == 'Vampire Room' ? 'selected' : '' }}>Ghostly Chamber</option>
+                                    <option value="Chamber Room" {{ $room->type == 'Chamber Room' ? 'selected' : '' }}>Deluxe Room</option>
+                                    <option value="Egyptian Tomb" {{ $room->type == "Egyptian Tomb" ? 'selected' : '' }}>Vampire's Lair</option>
+                                    <option value="Cursed Balcony Room" {{ $room->type == 'Cursed Balcony Room' ? 'selected' : '' }}>Ghostly Chamber</option>
                                 </select>
                             </div>
 

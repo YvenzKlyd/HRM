@@ -23,9 +23,12 @@
                             <div>
                                 <label for="type" class="block text-sm font-medium text-gray-700">Room Type</label>
                                 <select name="type" id="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                    <option value="Deluxe Suite">Deluxe Suite</option>
-                                    <option value="Vampire's Lair">Vampire's Lair</option>
-                                    <option value="Ghostly Chamber">Ghostly Chamber</option>
+                                    <option value="Haunted Suites">Haunted Suites</option>
+                                    <option value="Deluxe Room">Deluxe Room</option>
+                                    <option value="Vampire Room">Vampire Room</option>
+                                    <option value="Chamber Room">Chamber Room</option>
+                                    <option value="Egyptian Tomb">Egyptian Tomb</option>
+                                    <option value="Cursed Balcony Room">Cursed Balcony Room</option>
                                 </select>
                             </div>
 
