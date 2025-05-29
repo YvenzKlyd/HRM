@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // user routes
-Route::middleware(['auth','userMiddleware'])->group(function(){
+Route::middleware(['auth', 'userMiddleware'])->group(function(){
 
     Route::get('dashboard', [UserController::class,'index'])->name('dashboard');
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
@@ -29,9 +29,10 @@ Route::middleware(['auth','userMiddleware'])->group(function(){
 });
 
 // admin routes
-Route::middleware(['auth','adminMiddleware'])->group(function(){
+Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->name('admin.')->group(function(){
 
-    Route::get('/admin/dashboard', [AdminController::class,'index'])->name('admin.dashboard');
-    Route::resource('admin/rooms', RoomController::class)->names('admin.rooms');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('rooms', RoomController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
 });
