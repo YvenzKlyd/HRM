@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title', 'Register | Hotel Transylvania')
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

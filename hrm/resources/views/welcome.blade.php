@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Home Page
+    Hotel Transylvania
 @endsection
 
 @section('style')
@@ -43,7 +43,7 @@
 @section('content')
     <div class="container mx-auto p-4 text-center">
         <h1 class="text-4xl font-bold mb-8">HOTEL TRANSYLVANIA</h1>
-        <p class="text-xl text-gray-600 mb-12">Experience the most hauntingly beautiful stay of your afterlife</p>
+        <p class="text-xl text-gray-600 mb-12">Experience the most hauntingly beautiful stay of your afterlife.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Room Card 1 -->
