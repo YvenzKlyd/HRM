@@ -41,7 +41,18 @@ class BookingController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect()->route('dashboard')
+        return redirect()->route('bookings.show', $booking)
             ->with('success', 'Room booked successfully! Your booking is pending confirmation.');
+    }
+
+    public function show(Booking $booking)
+    {
+        // Ensure the user can only view their own bookings
+        if ($booking->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $booking->load(['room']);
+        return view('bookings.show', compact('booking'));
     }
 }
