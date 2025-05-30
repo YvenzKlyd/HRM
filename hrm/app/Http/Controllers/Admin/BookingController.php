@@ -22,19 +22,4 @@ class BookingController extends Controller
         $booking->load(['user', 'room']);
         return view('admin.bookings.show', compact('booking'));
     }
-
-    public function updatePaymentStatus(Request $request, Booking $booking)
-    {
-        $request->validate([
-            'payment_status' => 'required|in:pending,paid,failed'
-        ]);
-
-        $booking->update([
-            'payment_status' => $request->payment_status,
-            'paid_at' => $request->payment_status === 'paid' ? now() : null
-        ]);
-
-        return redirect()->route('admin.bookings.show', $booking)
-            ->with('success', 'Payment status updated successfully.');
-    }
 }
