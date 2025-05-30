@@ -41,9 +41,10 @@ class BookingController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect()->route('bookings.show', $booking)
+        return redirect()->route('dashboard')
             ->with('success', 'Room booked successfully! Your booking is pending confirmation.');
     }
+<<<<<<< HEAD
 
     public function show(Booking $booking)
     {
@@ -55,4 +56,16 @@ class BookingController extends Controller
         $booking->load(['room']);
         return view('bookings.show', compact('booking'));
     }
+
+    public function details()
+    {
+        $bookings = Booking::where('user_id', Auth::id())
+            ->with(['room'])
+            ->latest()
+            ->get();
+            
+        return view('bookings.details', compact('bookings'));
+    }
+=======
+>>>>>>> parent of f55add3 (medyo tama na)
 }

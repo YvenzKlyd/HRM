@@ -16,17 +16,13 @@ class Booking extends Model
         'check_in',
         'check_out',
         'total_price',
-        'status',
-        'payment_status',
-        'payment_method',
-        'paid_at'
+        'status'
     ];
 
     protected $casts = [
         'check_in' => 'date',
         'check_out' => 'date',
-        'total_price' => 'decimal:2',
-        'paid_at' => 'datetime'
+        'total_price' => 'decimal:2'
     ];
 
     public function user(): BelongsTo
@@ -37,19 +33,5 @@ class Booking extends Model
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);
-    }
-
-    public function isPaid(): bool
-    {
-        return $this->payment_status === 'paid';
-    }
-
-    public function markAsPaid(string $method): void
-    {
-        $this->update([
-            'payment_status' => 'paid',
-            'payment_method' => $method,
-            'paid_at' => now()
-        ]);
     }
 }

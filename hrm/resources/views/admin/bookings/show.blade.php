@@ -53,6 +53,30 @@
                                     </span>
                                 @endif
                             </p>
+
+                            @if($booking->status === 'confirmed')
+                                <form action="{{ route('admin.bookings.update-payment-status', $booking) }}" method="POST" class="mt-4">
+                                    @csrf
+                                    @method('PATCH')
+                                    
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label for="payment_status" class="block text-sm font-medium text-gray-700">Update Payment Status</label>
+                                            <select name="payment_status" id="payment_status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                <option value="pending" {{ $booking->payment_status === 'pending' ? 'selected' : '' }}>Pending</option>
+                                                <option value="paid" {{ $booking->payment_status === 'paid' ? 'selected' : '' }}>Paid</option>
+                                                <option value="failed" {{ $booking->payment_status === 'failed' ? 'selected' : '' }}>Failed</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700">
+                                                Update Payment Status
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            @endif
                         </div>
                     </div>
 
