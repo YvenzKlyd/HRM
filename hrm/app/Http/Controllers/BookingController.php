@@ -55,4 +55,14 @@ class BookingController extends Controller
         $booking->load(['room']);
         return view('bookings.show', compact('booking'));
     }
+
+    public function details()
+    {
+        $bookings = Booking::where('user_id', Auth::id())
+            ->with(['room'])
+            ->latest()
+            ->get();
+            
+        return view('bookings.details', compact('bookings'));
+    }
 }
