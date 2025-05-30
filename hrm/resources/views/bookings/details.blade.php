@@ -41,7 +41,10 @@
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                <a href="{{ route('bookings.show', $booking) }}" class="text-indigo-600 hover:text-indigo-900">View Details</a>
+                                                <a href="{{ route('bookings.show', $booking) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">View Details</a>
+                                                @if($booking->status === 'pending')
+                                                    <a href="{{ route('payments.form', $booking) }}" class="text-green-600 hover:text-green-900">Make Payment</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

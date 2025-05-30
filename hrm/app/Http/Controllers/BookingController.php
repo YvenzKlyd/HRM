@@ -10,6 +10,14 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
+    public function form(Request $request)
+    {
+        $roomId = $request->room_id;
+        $room = Room::findOrFail($roomId);
+        
+        return view('bookings.form', compact('room'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -41,7 +49,7 @@ class BookingController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect()->route('dashboard')
+        return redirect()->route('bookings.show', $booking)
             ->with('success', 'Room booked successfully! Your booking is pending confirmation.');
     }
 
@@ -54,6 +62,28 @@ class BookingController extends Controller
 
         $booking->load(['room']);
         return view('bookings.show', compact('booking'));
+    }
+
+    public function updatePaymentStatus(Request $request, Booking $booking)
+    {
+        $request->validate([
+            'payment_status' => 'required|in:pending,paid,failed'
+        ]);
+
+        $booking->update([
+            'payment_status' => $request->payment_status
+        ]);
+
+        return back()->with('success', 'Payment status updated successfully.');
+    }
+
+    public function index()
+    {
+        $bookings = Booking::with(['user', 'room'])
+            ->latest()
+            ->paginate(10);
+
+        return view('admin.bookings.index', compact('bookings'));
     }
 
     public function details()
