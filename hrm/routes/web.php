@@ -36,10 +36,7 @@ Route::middleware(['auth', 'adminMiddleware'])->prefix('admin')->name('admin.')-
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('rooms', RoomController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
-<<<<<<< HEAD
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class)->only(['index', 'show']);
     Route::patch('/bookings/{booking}/payment-status', [\App\Http\Controllers\Admin\BookingController::class, 'updatePaymentStatus'])->name('bookings.update-payment-status');
-=======
->>>>>>> parent of f55add3 (medyo tama na)
 
 });

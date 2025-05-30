@@ -44,7 +44,6 @@ class BookingController extends Controller
         return redirect()->route('dashboard')
             ->with('success', 'Room booked successfully! Your booking is pending confirmation.');
     }
-<<<<<<< HEAD
 
     public function show(Booking $booking)
     {
@@ -66,6 +65,4 @@ class BookingController extends Controller
             
         return view('bookings.details', compact('bookings'));
     }
-=======
->>>>>>> parent of f55add3 (medyo tama na)
 }
