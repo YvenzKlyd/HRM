@@ -10,14 +10,6 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
-    public function form(Request $request)
-    {
-        $roomId = $request->room_id;
-        $room = Room::findOrFail($roomId);
-        
-        return view('bookings.form', compact('room'));
-    }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -49,50 +41,7 @@ class BookingController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect()->route('bookings.show', $booking)
+        return redirect()->route('dashboard')
             ->with('success', 'Room booked successfully! Your booking is pending confirmation.');
-    }
-
-    public function show(Booking $booking)
-    {
-        // Ensure the user can only view their own bookings
-        if ($booking->user_id !== Auth::id()) {
-            abort(403);
-        }
-
-        $booking->load(['room']);
-        return view('bookings.show', compact('booking'));
-    }
-
-    public function updatePaymentStatus(Request $request, Booking $booking)
-    {
-        $request->validate([
-            'payment_status' => 'required|in:pending,paid,failed'
-        ]);
-
-        $booking->update([
-            'payment_status' => $request->payment_status
-        ]);
-
-        return back()->with('success', 'Payment status updated successfully.');
-    }
-
-    public function index()
-    {
-        $bookings = Booking::with(['user', 'room'])
-            ->latest()
-            ->paginate(10);
-
-        return view('admin.bookings.index', compact('bookings'));
-    }
-
-    public function details()
-    {
-        $bookings = Booking::where('user_id', Auth::id())
-            ->with(['room'])
-            ->latest()
-            ->get();
-            
-        return view('bookings.details', compact('bookings'));
     }
 }
