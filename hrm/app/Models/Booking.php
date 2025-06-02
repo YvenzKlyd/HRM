@@ -13,15 +13,17 @@ class Booking extends Model
     protected $fillable = [
         'user_id',
         'room_id',
-        'check_in',
-        'check_out',
+        'check_in_date',
+        'check_out_date',
+        'guests',
         'total_price',
-        'status'
+        'status',
+        'special_requests'
     ];
 
     protected $casts = [
-        'check_in' => 'date',
-        'check_out' => 'date',
+        'check_in_date' => 'date',
+        'check_out_date' => 'date',
         'total_price' => 'decimal:2'
     ];
 

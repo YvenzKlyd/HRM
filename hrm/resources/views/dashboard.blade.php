@@ -24,14 +24,31 @@
                                         <form action="{{ route('bookings.store') }}" method="POST" class="mt-4">
                                             @csrf
                                             <input type="hidden" name="room_id" value="{{ $room->id }}">
+                                            
                                             <div class="mb-4">
-                                                <label for="check_in" class="block text-sm font-medium text-gray-700">Check-in Date</label>
-                                                <input type="date" name="check_in" id="check_in" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                                <label for="check_in_date" class="block text-sm font-medium text-gray-700">Check-in Date</label>
+                                                <input type="date" name="check_in_date" id="check_in_date" required
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                             </div>
+
                                             <div class="mb-4">
-                                                <label for="check_out" class="block text-sm font-medium text-gray-700">Check-out Date</label>
-                                                <input type="date" name="check_out" id="check_out" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                                <label for="check_out_date" class="block text-sm font-medium text-gray-700">Check-out Date</label>
+                                                <input type="date" name="check_out_date" id="check_out_date" required
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                             </div>
+
+                                            <div class="mb-4">
+                                                <label for="guests" class="block text-sm font-medium text-gray-700">Number of Guests</label>
+                                                <input type="number" name="guests" id="guests" min="1" max="{{ $room->capacity }}" required
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label for="special_requests" class="block text-sm font-medium text-gray-700">Special Requests (Optional)</label>
+                                                <textarea name="special_requests" id="special_requests" rows="2"
+                                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                                            </div>
+
                                             <button type="submit" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                                 Book Now
                                             </button>
