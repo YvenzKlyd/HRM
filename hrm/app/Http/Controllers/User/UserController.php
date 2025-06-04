@@ -13,4 +13,9 @@ class UserController extends Controller
         $rooms = Room::where('is_available', true)->get();
         return view('dashboard', compact('rooms'));
     }
+
+    public function showRoom(Room $room)
+    {
+        return view('rooms.show', compact('room'));
+    }
 }

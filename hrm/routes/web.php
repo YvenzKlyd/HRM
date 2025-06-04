@@ -26,6 +26,7 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'userMiddleware'])->group(function(){
 
     Route::get('dashboard', [UserController::class,'index'])->name('dashboard');
+    Route::get('/rooms/{room}', [UserController::class, 'showRoom'])->name('rooms.show');
     Route::get('/bookings', [UserBookingController::class, 'index'])->name('bookings.index');
     Route::post('/bookings', [UserBookingController::class, 'store'])->name('bookings.store');
     Route::get('/bookings/{booking}', [UserBookingController::class, 'show'])->name('bookings.show');

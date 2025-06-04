@@ -60,6 +60,7 @@ class BookingController extends Controller
             'check_out_date' => $request->check_out_date,
             'guests' => $request->guests,
             'total_price' => $totalPrice,
+            'total_amount' => $totalPrice, // Set total_amount equal to total_price initially
             'special_requests' => $request->special_requests,
             'status' => 'pending'
         ]);
